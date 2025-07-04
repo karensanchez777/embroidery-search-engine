@@ -1,0 +1,17 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+
+# SQLite database
+embroidery.db
+
+# Uploads and media files
+uploads/
+*.jpg
+*.png
+
+# Environment variables
+.env
+
+# Model weights
+*.pth

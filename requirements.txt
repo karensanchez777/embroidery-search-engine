@@ -1,0 +1,7 @@
+Flask
+opencv-python
+torch
+Pillow==9.5.0
+python-dotenv
+git+https://github.com/facebookresearch/detectron2.git@9eb4831
+git+https://github.com/aim-uofa/AdelaiDet.git

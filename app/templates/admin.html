@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<!-- 🔗 Link back to home -->
+<p><a href="{{ url_for('main.home') }}">← Back to Home</a></p>
+
+<h2>Upload a New Embroidery Design</h2>
+
+<!-- ✅ Display success or error message -->
+{% if message %}
+    <p style="color: green;"><strong>{{ message }}</strong></p>
+{% endif %}
+
+<!-- ✅ Upload form with preview -->
+<form method="post" enctype="multipart/form-data" action="{{ url_for('main.index') }}">
+    <label for="imageInput">Upload Embroidery Design Image:</label><br>
+    <input type="file" id="imageInput" name="image" accept="image/*" onchange="previewImage(event)">
+    <br><br>
+    <img id="imagePreview" src="#" alt="Preview" style="max-width: 300px; display: none; border: 1px solid #ccc;">
+    <br><br>
+    <input type="submit" value="Upload & Index">
+</form>
+
+<!-- ✅ JS to show preview -->
+<script>
+function previewImage(event) {
+    const input = event.target;
+    const preview = document.getElementById('imagePreview');
+
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = 'block';
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else {
+        preview.src = '#';
+        preview.style.display = 'none';
+    }
+}
+</script>
+{% endblock %}

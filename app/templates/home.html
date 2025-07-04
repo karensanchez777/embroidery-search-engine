@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+<form method="post" action="{{ url_for('main.search') }}">
+    <input type="text" name="query" placeholder="Search text...">
+    <input type="submit" value="Search">
+</form>
+
+<!--This link send us to the admin panel -->
+<p><a href="{{ url_for('main.admin') }}">Go to Admin Panel</a></p>
+
+{% if results %}
+    <h2>Results</h2>
+    <ul>
+        {% for img_name, design_text in results %}
+            <li><strong>{{ img_name }}</strong>: {{ design_text }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}
+
+
